@@ -20,15 +20,15 @@ const LoginForm = ({ navigation }) => {
                 Alert.alert('Login Error', error.message);
             } else {
                 console.log('Login successful');
-                console.log('Session:', session);
+              //  console.log('Session:', session);
 
                 await storeData('accessToken', session.access_token);
 
                 // Verify the stored token and navigate accordingly
                 const token = await getData('accessToken');
                 if (token) {
-                    console.log('Stored JWT:', token);
-                    navigation.navigate('Create Profile'); // Navigate on successful login
+                  //  console.log('Stored JWT:', token);
+                    navigation.navigate('Create Profile'); 
                 }
             }
         } catch (error) {

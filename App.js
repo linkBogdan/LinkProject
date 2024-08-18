@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import AppNavigator from './nigga/Navigation/AppNavigator';
 import { getData } from './utils/secureStoreUtils';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -14,7 +14,7 @@ export default function App() {
         if (token) {
           setIsAuthenticated(true);
         } else {
-          setIsAuthenticated(flase);
+          setIsAuthenticated(false);
         }
       } catch (error) {
         console.error('Error checking authentication status:', error);
