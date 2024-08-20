@@ -14,22 +14,26 @@ const LoginForm = ({ navigation }) => {
                 email,
                 password,
             });
-
+    
             if (error) {
-                console.log('Error:', error.message);
+                console.log('Login Error:', error.message);
                 Alert.alert('Login Error', error.message);
+                setPassword('');  // Clear password field on error
+                return;
+            }
+    
+            console.log('Login successful');
+            // Store both access and refresh tokens
+            await storeData('accessToken', session.access_token);
+            await storeData('refreshToken', session.refresh_token);
+    
+            // Verify the stored tokens and navigate accordingly
+            const token = await getData('accessToken');
+            if (token) {
+                navigation.navigate('Create Profile');
             } else {
-                console.log('Login successful');
-              //  console.log('Session:', session);
-
-                await storeData('accessToken', session.access_token);
-
-                // Verify the stored token and navigate accordingly
-                const token = await getData('accessToken');
-                if (token) {
-                  //  console.log('Stored JWT:', token);
-                    navigation.navigate('Create Profile'); 
-                }
+                console.log('Error: Token not found after login');
+                Alert.alert('Error', 'Unable to retrieve session token.');
             }
         } catch (error) {
             console.log('Unexpected Error:', error.message);

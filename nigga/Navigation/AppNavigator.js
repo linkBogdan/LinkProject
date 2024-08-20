@@ -39,7 +39,7 @@ const AppNavigator = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={isLoggedIn ? 'Create Profile' : 'Login' }>
+            <Stack.Navigator initialRouteName={isLoggedIn ? 'NextScreen' : 'Login' }>
                 {!isLoggedIn ? (
                     <>
                         

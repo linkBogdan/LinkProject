@@ -1,24 +1,30 @@
 // authUtils.js
 import supabase from '../supabaseClient';
-import { getData } from './secureStoreUtils';
 
 export const checkSession = async () => {
     const token = await getData('accessToken');
-    if (token) {
-        const { data: { session }, error } = await supabase.auth.setSession(token);
+    const refreshToken = await getData('refreshToken');
+    if (token && refreshToken) {
+        const { data, error } = await supabase.auth.setSession({
+            access_token: token,
+            refresh_token: refreshToken
+        });
+
         if (error) {
             console.error('Error setting session:', error.message);
             return false;
         } else {
+            console.log('Session restored:', data);
             return true;
         }
     } else {
+        console.warn('No session token found');
         return false;
     }
 };
 
 export const subscribeToAuthChanges = (setIsLoggedIn) => {
-    const { subscription } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: subscription } = supabase.auth.onAuthStateChange((event, session) => {
         console.log('Auth state changed:', event, session);
         setIsLoggedIn(session ? true : false);
     });
