@@ -30,7 +30,7 @@ const LoginForm = ({ navigation }) => {
             // Verify the stored tokens and navigate accordingly
             const token = await getData('accessToken');
             if (token) {
-                navigation.navigate('Create Profile');
+                navigation.navigate('NextPage');
             } else {
                 console.log('Error: Token not found after login');
                 Alert.alert('Error', 'Unable to retrieve session token.');

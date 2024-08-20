@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
 import CreateAccountScreen from '../screens/CreateAccountScreen';
 import CreateProfileScreen from '../screens/CreateProfileScreen';
-import NextScreen from '../screens/NextScreen';
+import HomeScreen from '../screens/HomeScreen';
 import { checkSession, subscribeToAuthChanges } from '../../utils/authUtils';
 
 const Stack = createNativeStackNavigator();
@@ -39,7 +39,7 @@ const AppNavigator = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={isLoggedIn ? 'NextScreen' : 'Login' }>
+            <Stack.Navigator initialRouteName={isLoggedIn ? 'HomeScreen' : 'Login' }>
                 {!isLoggedIn ? (
                     <>
                         
@@ -49,7 +49,7 @@ const AppNavigator = () => {
                 ) : (
                     <>
                     <Stack.Screen name="Create Profile" component={CreateProfileScreen} />
-                    <Stack.Screen name="NextScreen" component={NextScreen} />
+                    <Stack.Screen name="HomeScreen" component={HomeScreen} />
                     </>
                 )}
             </Stack.Navigator>
