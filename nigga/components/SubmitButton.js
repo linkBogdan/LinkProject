@@ -34,8 +34,7 @@ const SubmitButton = ({ displayName, selectedGender, age, navigation, supabase }
                 Alert.alert('Error', 'Failed to update profile.');
             } else {
                 console.log('Profile updated successfully');
-                Alert.alert('Success', 'Profile updated successfully.');
-                navigation.navigate('NextScreen'); // Replace with your target screen
+                navigation.navigate('Home Screen'); // Replace with your target screen
             }
         } catch (error) {
             console.error('Unexpected error:', error.message);

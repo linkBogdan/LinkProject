@@ -9,7 +9,6 @@ const LogoutButton = ({ navigation }) => {
             const { error } = await supabase.auth.signOut();
 
             if (error) {
-                console.log('Error during logout:', error.message);
                 Alert.alert('Logout Error', error.message);
             } else {
                 console.log('Logout successful');
@@ -21,7 +20,6 @@ const LogoutButton = ({ navigation }) => {
                 navigation.navigate('Login');
             }
         } catch (error) {
-            console.log('Unexpected Error:', error.message);
             Alert.alert('Unexpected Error', error.message);
         }
     };

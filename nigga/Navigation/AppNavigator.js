@@ -8,6 +8,8 @@ import CreateAccountScreen from '../screens/CreateAccountScreen';
 import CreateProfileScreen from '../screens/CreateProfileScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { checkSession, subscribeToAuthChanges } from '../../utils/authUtils';
+import ChatMainScreen from '../screens/ChatMainScreen';
+import ChatDetailScreen from '../screens/ChatDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +41,7 @@ const AppNavigator = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={isLoggedIn ? 'HomeScreen' : 'Login' }>
+            <Stack.Navigator initialRouteName={isLoggedIn ? 'Home Screen' : 'Login' }>
                 {!isLoggedIn ? (
                     <>
                         
@@ -49,7 +51,9 @@ const AppNavigator = () => {
                 ) : (
                     <>
                     <Stack.Screen name="Create Profile" component={CreateProfileScreen} />
-                    <Stack.Screen name="HomeScreen" component={HomeScreen} />
+                    <Stack.Screen name="Home Screen" component={HomeScreen} />
+                    <Stack.Screen name="Chat Screen" component={ChatMainScreen} />
+                    <Stack.Screen name="Chat Detail" component={ChatDetailScreen} />
                     </>
                 )}
             </Stack.Navigator>

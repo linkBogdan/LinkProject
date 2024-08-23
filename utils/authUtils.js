@@ -11,10 +11,10 @@ export const checkSession = async () => {
         });
 
         if (error) {
-            console.error('Error setting session:', error.message);
+           // console.error('Error setting session:', error.message);
             return false;
         } else {
-            console.log('Session restored:', data);
+          //  console.log('Session restored:', data);
             return true;
         }
     } else {
@@ -25,7 +25,7 @@ export const checkSession = async () => {
 
 export const subscribeToAuthChanges = (setIsLoggedIn) => {
     const { data: subscription } = supabase.auth.onAuthStateChange((event, session) => {
-        console.log('Auth state changed:', event, session);
+        
         setIsLoggedIn(session ? true : false);
     });
 

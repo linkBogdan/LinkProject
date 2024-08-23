@@ -30,7 +30,7 @@ const LoginForm = ({ navigation }) => {
             // Verify the stored tokens and navigate accordingly
             const token = await getData('accessToken');
             if (token) {
-                navigation.navigate('NextPage');
+                navigation.navigate('Home Screen');
             } else {
                 console.log('Error: Token not found after login');
                 Alert.alert('Error', 'Unable to retrieve session token.');
